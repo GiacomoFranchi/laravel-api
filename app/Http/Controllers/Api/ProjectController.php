@@ -9,8 +9,8 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     public function index(){
-        dd(Project::with('types')->toSql());
-        $projects= Project::with('types', 0);
+        
+        $projects= Project::with('type')->paginate(10);
 
         return response()->json([
             'results'=> $projects,
